@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gladiators/pages/splash_screen.dart';
-import 'package:gladiators/widgets/inventory.dart';
 
 void main() {
-  runApp(MainPage());
+  runApp(ProviderScope(child: MainPage()));
 }
 
 class MainPage extends StatefulWidget {
@@ -22,7 +22,6 @@ class _MainPageState extends State<MainPage> {
       routes: {
         // Главный экран
         '/': (context) => SplashScreen(),
-        // Экран подробностей
         // '/selectKnightPage': (context) => const DetailsScreen(),
       },      
     );
