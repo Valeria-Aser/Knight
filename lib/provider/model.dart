@@ -9,28 +9,51 @@ Interface interfaceFromJson(String str) => Interface.fromJson(json.decode(str));
 String interfaceToJson(Interface data) => json.encode(data.toJson());
 
 class Interface {
+    Data? data;
+
+    Interface({
+        this.data,
+    });
+
+    Interface copyWith({
+        Data? data,
+    }) => 
+        Interface(
+            data: data ?? this.data,
+        );
+
+    factory Interface.fromJson(Map<String, dynamic> json) => Interface(
+        data: json["data"] == null ? null : Data.fromJson(json["data"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "data": data?.toJson(),
+    };
+}
+
+class Data {
     List<Armor>? armor;
     List<Armor>? weapons;
     List<Armor>? shields;
 
-    Interface({
+    Data({
         this.armor,
         this.weapons,
         this.shields,
     });
 
-    Interface copyWith({
+    Data copyWith({
         List<Armor>? armor,
         List<Armor>? weapons,
         List<Armor>? shields,
     }) => 
-        Interface(
+        Data(
             armor: armor ?? this.armor,
             weapons: weapons ?? this.weapons,
             shields: shields ?? this.shields,
         );
 
-    factory Interface.fromJson(Map<String, dynamic> json) => Interface(
+    factory Data.fromJson(Map<String, dynamic> json) => Data(
         armor: json["armor"] == null ? [] : List<Armor>.from(json["armor"]!.map((x) => Armor.fromJson(x))),
         weapons: json["weapons"] == null ? [] : List<Armor>.from(json["weapons"]!.map((x) => Armor.fromJson(x))),
         shields: json["shields"] == null ? [] : List<Armor>.from(json["shields"]!.map((x) => Armor.fromJson(x))),

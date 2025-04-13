@@ -23,7 +23,7 @@ class _MainPageState extends State<MainPage> {
         // Главный экран
         '/': (context) => SplashScreen(),
         // '/selectKnightPage': (context) => const DetailsScreen(),
-      },      
+      },
     );
   }
 }
